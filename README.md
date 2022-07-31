@@ -14,12 +14,12 @@ npm run dev
 /users/register
 ```
 
-#### Blog
+#### post
 ```
-GET /blogs - get all blogs
-GET /blogs/:id - get blog by id
-GET /user/:username - get all blogs by username
-POST /blogs - create new blog
-PUT /blogs/:id - update blog
-DELETE /blogs/:id - delete blog
+GET /posts - get all posts
+GET /posts/:id - get post by id
+GET /user/:username - get all posts by username
+POST /posts - create new post
+PUT /posts/:id - update post
+DELETE /posts/:id - delete post
 ```

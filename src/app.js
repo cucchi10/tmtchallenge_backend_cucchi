@@ -1,8 +1,8 @@
 import express from "express";
 import morgan from "morgan";
 // Routes
-import blogRoutes from "./routes/blog.routes";
-import authRoutes from "./routes/auth.routes";
+import postRoutes from "./routes/postRoutes";
+import userRoutes from "./routes/userRoutes";
 
 const app = express();
 
@@ -17,7 +17,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 // Routes
-app.use("/users", authRoutes);
-app.use("/blogs", blogRoutes);
+app.use("/users", userRoutes);
+app.use("/posts", postRoutes);
 
 export default app;

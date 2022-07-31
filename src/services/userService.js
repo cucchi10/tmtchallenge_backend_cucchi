@@ -1,6 +1,5 @@
 import bcryptjs from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { getConnection } from '../database/database';
 import userModel from '../models/userModel'
 import HttpError from '../errors/HttpError';
 

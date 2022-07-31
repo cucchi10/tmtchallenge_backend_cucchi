@@ -1,37 +1,36 @@
-import { getConnection } from "../database/database";
-import blogService from './../services/blogService';
+import postService from './../services/postService';
 import HttpError from '../errors/HttpError';
 
-const getBlogs = async (req, res) => {
+const getPosts = async (req, res) => {
     try {
-        const result = await blogService.getBlogs()
+        const result = await postService.getPosts()
         res.send(result);
     } catch (error) {
         res.status(error.status || 500).send(error.message);
     }
 };
 
-const getBlogsByUser = async (req, res) => {
+const getPostsByUser = async (req, res) => {
     try {
         const { userName } = req.params;
-        const result = await blogService.getBlogsByUser(userName)
+        const result = await postService.getPostsByUser(userName)
         res.status(200).send(result);
     } catch (error) {
         res.status(error.status || 500).send(error.message);
     }
 };
 
-const getBlog = async (req, res) => {
+const getPost = async (req, res) => {
     try {
         const { id } = req.params;
-        const result = await blogService.getBlog(id)
+        const result = await postService.getPost(id)
         res.send(result);
     } catch (error) {
         res.status(error.status || 500).send(error.message);
     }
 };
 
-const addBlog = async (req, res) => {
+const addPost = async (req, res) => {
     try {
         const {title, content } = req.body;
         const {authorization} = req.headers
@@ -44,7 +43,7 @@ const addBlog = async (req, res) => {
             throw new HttpError("Please fill all field", 400);
         }
 
-        const result = await blogService.addBlog(title, content, authorization)
+        const result = await postService.addPost(title, content, authorization)
         res.send(result)
 
     } catch (error) {
@@ -52,7 +51,7 @@ const addBlog = async (req, res) => {
     }
 };
 
-const updateBlog = async (req, res) => {
+const updatePost = async (req, res) => {
     try {
         const { id } = req.params;
         const {title, content} = req.body;
@@ -66,7 +65,7 @@ const updateBlog = async (req, res) => {
             throw new HttpError("Please fill all fields",400);
         }
 
-        const result = await blogService.updateBlog(id, title, content, authorization)
+        const result = await postService.updatePost(id, title, content, authorization)
         res.status(200).send(result);
         
     } catch (error) {
@@ -74,7 +73,7 @@ const updateBlog = async (req, res) => {
     }
 };
 
-const deleteBlog = async (req, res) => {
+const deletePost = async (req, res) => {
     try {
         const { id } = req.params;
         const {authorization} = req.headers;
@@ -83,18 +82,18 @@ const deleteBlog = async (req, res) => {
             throw new HttpError("Authorization token is required", 409)
         }
 
-        await blogService.deleteBlog(id, authorization)
-        res.status(200).send("Blog deleted correctly")
+        await postService.deletePost(id, authorization)
+        res.status(200).send("post deleted correctly")
     } catch (error) {
         res.status(error.status || 500).send(error.message);
     }
 };
 
 module.exports = {
-    getBlogs,
-    getBlog,
-    addBlog,
-    updateBlog,
-    deleteBlog,
-    getBlogsByUser
+    getPosts,
+    getPost,
+    addPost,
+    updatePost,
+    deletePost,
+    getPostsByUser
 };

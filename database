@@ -1,6 +1,6 @@
 /*
-CREATE DATABASE blogbackendnode;
-USE blogbackendnode;
+CREATE DATABASE postbackendnode;
+USE postbackendnode;
 
 
 CREATE TABLE users (
@@ -11,7 +11,7 @@ password varchar(255)
 );
 
 
-CREATE TABLE blogs (
+CREATE TABLE posts (
 id INT auto_increment PRIMARY KEY,
 creation DATETIME default NOW(),
 title text,
@@ -19,32 +19,32 @@ content text,
 author_id INT
 );
 
-ALTER TABLE `blogbackendnode`.`blogs` 
-ADD INDEX `blog_autohorId_users_idx` (`author_id` ASC) VISIBLE;
+ALTER TABLE `postbackendnode`.`posts` 
+ADD INDEX `post_autohorId_users_idx` (`author_id` ASC) VISIBLE;
 ;
-ALTER TABLE `blogbackendnode`.`blogs` 
-ADD CONSTRAINT `blog_autohorId_users`
+ALTER TABLE `postbackendnode`.`posts` 
+ADD CONSTRAINT `post_autohorId_users`
   FOREIGN KEY (`author_id`)
-  REFERENCES `blogbackendnode`.`users` (`id`)
+  REFERENCES `postbackendnode`.`users` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
   
-INSERT INTO `blogbackendnode`.`users` (`username`, `email`, `password`) VALUES ('Lucas', 'Lucas@gmail.com', '$2a$08$v3jBjznuUgMCVPw/V9/GVuyu2zUlR0hIlTxCOaQU9DFM3kl3CwiQO');
-INSERT INTO `blogbackendnode`.`users` (`username`, `email`, `password`) VALUES ('Juan', 'Juan@gmail.com', '$2a$08$v3jBjznuUgMCVPw/V9/GVuyu2zUlR0hIlTxCOaQU9DFM3kl3CwiQO');
-INSERT INTO `blogbackendnode`.`users` (`username`, `email`, `password`) VALUES ('Pablo', 'Pablo@gmail.com', '$2a$08$v3jBjznuUgMCVPw/V9/GVuyu2zUlR0hIlTxCOaQU9DFM3kl3CwiQO');
-INSERT INTO `blogbackendnode`.`users` (`username`, `email`, `password`) VALUES ('Andres', 'Andres@gmail.com', '$2a$08$v3jBjznuUgMCVPw/V9/GVuyu2zUlR0hIlTxCOaQU9DFM3kl3CwiQO');
+INSERT INTO `postbackendnode`.`users` (`username`, `email`, `password`) VALUES ('Lucas', 'Lucas@gmail.com', '$2a$08$v3jBjznuUgMCVPw/V9/GVuyu2zUlR0hIlTxCOaQU9DFM3kl3CwiQO');
+INSERT INTO `postbackendnode`.`users` (`username`, `email`, `password`) VALUES ('Juan', 'Juan@gmail.com', '$2a$08$v3jBjznuUgMCVPw/V9/GVuyu2zUlR0hIlTxCOaQU9DFM3kl3CwiQO');
+INSERT INTO `postbackendnode`.`users` (`username`, `email`, `password`) VALUES ('Pablo', 'Pablo@gmail.com', '$2a$08$v3jBjznuUgMCVPw/V9/GVuyu2zUlR0hIlTxCOaQU9DFM3kl3CwiQO');
+INSERT INTO `postbackendnode`.`users` (`username`, `email`, `password`) VALUES ('Andres', 'Andres@gmail.com', '$2a$08$v3jBjznuUgMCVPw/V9/GVuyu2zUlR0hIlTxCOaQU9DFM3kl3CwiQO');
 
 
-INSERT INTO `blogbackendnode`.`blogs` (`title`, `content`, `author_id`) VALUES ('Titulo Prueba 1', 'CONTENIDO PRUEBA', '1');
-INSERT INTO `blogbackendnode`.`blogs` (`title`, `content`, `author_id`) VALUES ('Titulo Prueba 2', 'CONTENIDO PRUEBA', '2');
-INSERT INTO `blogbackendnode`.`blogs` (`title`, `content`, `author_id`) VALUES ('Titulo Prueba 3', 'CONTENIDO PRUEBA', '3');
-INSERT INTO `blogbackendnode`.`blogs` (`title`, `content`, `author_id`) VALUES ('Titulo Prueba 4', 'CONTENIDO PRUEBA', '4');
-INSERT INTO `blogbackendnode`.`blogs` (`title`, `content`, `author_id`) VALUES ('Titulo Prueba 5', 'CONTENIDO PRUEBA', '1');
-INSERT INTO `blogbackendnode`.`blogs` (`title`, `content`, `author_id`) VALUES ('Titulo Prueba 6', 'CONTENIDO PRUEBA', '2');
-INSERT INTO `blogbackendnode`.`blogs` (`title`, `content`, `author_id`) VALUES ('Titulo Prueba 7', 'CONTENIDO PRUEBA', '3');
-INSERT INTO `blogbackendnode`.`blogs` (`title`, `content`, `author_id`) VALUES ('Titulo Prueba 8', 'CONTENIDO PRUEBA', '4');
-INSERT INTO `blogbackendnode`.`blogs` (`title`, `content`, `author_id`) VALUES ('Titulo Prueba 9', 'CONTENIDO PRUEBA', '1');
-INSERT INTO `blogbackendnode`.`blogs` (`title`, `content`, `author_id`) VALUES ('Titulo Prueba 10', 'CONTENIDO PRUEBA', '2');
-INSERT INTO `blogbackendnode`.`blogs` (`title`, `content`, `author_id`) VALUES ('Titulo Prueba 11', 'CONTENIDO PRUEBA', '3');
-INSERT INTO `blogbackendnode`.`blogs` (`title`, `content`, `author_id`) VALUES ('Titulo Prueba 12', 'CONTENIDO PRUEBA', '4');
+INSERT INTO `postbackendnode`.`posts` (`title`, `content`, `author_id`) VALUES ('Titulo Prueba 1', 'CONTENIDO PRUEBA', '1');
+INSERT INTO `postbackendnode`.`posts` (`title`, `content`, `author_id`) VALUES ('Titulo Prueba 2', 'CONTENIDO PRUEBA', '2');
+INSERT INTO `postbackendnode`.`posts` (`title`, `content`, `author_id`) VALUES ('Titulo Prueba 3', 'CONTENIDO PRUEBA', '3');
+INSERT INTO `postbackendnode`.`posts` (`title`, `content`, `author_id`) VALUES ('Titulo Prueba 4', 'CONTENIDO PRUEBA', '4');
+INSERT INTO `postbackendnode`.`posts` (`title`, `content`, `author_id`) VALUES ('Titulo Prueba 5', 'CONTENIDO PRUEBA', '1');
+INSERT INTO `postbackendnode`.`posts` (`title`, `content`, `author_id`) VALUES ('Titulo Prueba 6', 'CONTENIDO PRUEBA', '2');
+INSERT INTO `postbackendnode`.`posts` (`title`, `content`, `author_id`) VALUES ('Titulo Prueba 7', 'CONTENIDO PRUEBA', '3');
+INSERT INTO `postbackendnode`.`posts` (`title`, `content`, `author_id`) VALUES ('Titulo Prueba 8', 'CONTENIDO PRUEBA', '4');
+INSERT INTO `postbackendnode`.`posts` (`title`, `content`, `author_id`) VALUES ('Titulo Prueba 9', 'CONTENIDO PRUEBA', '1');
+INSERT INTO `postbackendnode`.`posts` (`title`, `content`, `author_id`) VALUES ('Titulo Prueba 10', 'CONTENIDO PRUEBA', '2');
+INSERT INTO `postbackendnode`.`posts` (`title`, `content`, `author_id`) VALUES ('Titulo Prueba 11', 'CONTENIDO PRUEBA', '3');
+INSERT INTO `postbackendnode`.`posts` (`title`, `content`, `author_id`) VALUES ('Titulo Prueba 12', 'CONTENIDO PRUEBA', '4');
 */
